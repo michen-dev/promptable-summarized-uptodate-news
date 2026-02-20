@@ -14,7 +14,7 @@ def requests_data(category, keywords):
         "q": q,
         "language": "en",
         "sortBy": "publishedAt",
-        "pageSize": 1}
+        "pageSize": 10}
 
     response = requests.get(url=url, params=params)
     if response.status_code != 200:
