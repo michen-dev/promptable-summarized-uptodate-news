@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Flow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Progress Indicator -->
+        <div class="progress">
+            <div class="progress-dot active" id="dot1"></div>
+            <div class="progress-dot" id="dot2"></div>
+            <div class="progress-dot" id="dot3"></div>
+        </div>
+
+        <!-- Step 1: Choose Option -->
+        <div class="step active" id="step1">
+            <div class="card">
+                <h1>Choose Your News Category</h1>
+                <p class="subtitle">Select the type of news that you want to read</p>
+                
+                <div class="options-grid">
+                    <div class="option-card" data-value="technology">
+                        <div class="option-title">Technology</div>
+                    </div>
+                    <div class="option-card" data-value="sports">
+                        <div class="option-title">Sports</div>
+                    </div>
+                    <div class="option-card" data-value="business">
+                        <div class="option-title">Business</div>
+                    </div>
+                    <div class="option-card" data-value="entertainment">
+                        <div class="option-title">Entertainment</div>
+                    </div>
+                    <div class="option-card" data-value="health">
+                        <div class="option-title">Health</div>
+                    </div>
+                    <div class="option-card" data-value="science">
+                        <div class="option-title">Science</div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <!-- Step 2: Enter Prompt -->
+        <div class="step" id="step2">
+            <div class="card">
+                <h1>Specifically Desirable News</h1>
+                <p class="subtitle">What specifically you want to read about? Skip if you have no special requirements</p>
+                <p class="subtitle"><i>*It is recommended to request ONE topic at a time</i></p>
+                <textarea 
+                    class="prompt-box" 
+                    id="promptInput"
+                    placeholder="Type your desirable topic of news here..."></textarea>
+
+                <div class="button-group">
+                    <button class="btn-secondary" id="skipBtn">Skip</button>
+                    <button class="btn-primary" id="submitBtn">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Show Articles -->
+        <div class="step" id="step3">
+            <div class="articles-page">
+                <div class="articles-header">
+                    <h1>Latest News</h1>
+                </div>
+                
+                <div class="articles-container" id="articlesContainer">
+                    <!-- Articles will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+</body>
+</html>

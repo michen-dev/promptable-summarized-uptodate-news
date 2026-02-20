@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=DM+Sans:wght@400;500&display=swap');
+
+:root {
+    --ink: #1a1814;
+    --ink-soft: #3d3a35;
+    --ink-muted: #7a756c;
+    --paper: #faf8f4;
+    --paper-warm: #f2ede4;
+    --paper-dark: #e8e1d5;
+    --rule: #d0c9bc;
+    --accent: #c0392b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background-color: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 1.5rem;
+}
+
+/* Steps */
+.container {
+    max-width: 680px;
+    width: 100%;
+}
+
+.step {
+    display: none;
+    animation: appear 0.4s ease-out;
+}
+
+.step.active {
+    display: block;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Progress */
+.progress {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
+.progress-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rule);
+    transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+    background: var(--ink);
+    width: 20px;
+    border-radius: 3px;
+}
+
+/* Card */
+.card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--ink);
+    padding: 3rem 3rem 2.5rem;
+}
+
+h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+.subtitle + .subtitle {
+    margin-top: -1.75rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.8rem;
+    opacity: 0.75;
+}
+
+/* Step 1: Options */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+}
+
+.option-card {
+    padding: 1.75rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    position: relative;
+    text-align: center;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+}
+
+.option-card:nth-child(3n) {
+    border-right: none;
+}
+
+.option-card:nth-last-child(-n+3) {
+    border-bottom: none;
+}
+
+.option-card:hover {
+    background: var(--paper-warm);
+}
+
+.option-card.selected {
+    background: var(--ink);
+}
+
+.option-card.selected .option-title {
+    color: var(--paper);
+}
+
+.option-card.selected::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+}
+
+.option-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+}
+
+/* Step 2: Prompt */
+.prompt-box {
+    width: 100%;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-top: 2px solid var(--ink);
+    padding: 1.25rem;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1rem;
+    color: var(--ink);
+    resize: vertical;
+    min-height: 160px;
+    margin-bottom: 1.25rem;
+    transition: border-color 0.2s ease;
+    line-height: 1.7;
+}
+
+.prompt-box:focus {
+    outline: none;
+    border-top-color: var(--accent);
+}
+
+.prompt-box::placeholder {
+    color: var(--ink-muted);
+    font-style: italic;
+}
+
+.button-group {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+button {
+    padding: 0.7rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 1px solid var(--ink);
+}
+
+.btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+}
+
+.btn-primary:hover {
+    background: var(--ink-soft);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--ink-muted);
+    border-color: var(--rule);
+}
+
+.btn-secondary:hover {
+    border-color: var(--ink-muted);
+    color: var(--ink);
+}
+
+/* Step 3: Articles */
+#step3 {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.articles-page {
+    width: 100%;
+}
+
+.articles-header {
+    text-align: center;
+    padding: 2.5rem 2rem 1.75rem;
+    border-bottom: 3px double var(--ink);
+}
+
+.articles-header h1 {
+    font-size: 2.25rem;
+    letter-spacing: -0.02em;
+}
+
+.articles-container {
+    background: var(--paper);
+}
+
+.article-section {
+    padding: 2.75rem 2.5rem;
+    border-bottom: 1px solid var(--rule);
+    animation: appear 0.4s ease-out backwards;
+}
+
+.article-section:nth-child(even) {
+    background: var(--paper-warm);
+}
+
+.article-section:nth-child(odd) {
+    background: var(--paper);
+}
+
+.article-section:last-child {
+    border-bottom: none;
+}
+
+.article-section:hover {
+    background: var(--paper-dark);
+    transition: background 0.2s ease;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+}
+
+.article-category {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-left: 2px solid var(--accent);
+    padding-left: 0.5rem;
+}
+
+.article-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+}
+
+.article-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+}
+
+.article-content {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+    max-width: 68ch;
+}
+
+.article-content p + p {
+    margin-top: 1rem;
+}
+
+.article-link {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.article-link::after {
+    content: "→";
+    transition: transform 0.15s ease;
+}
+
+.article-link:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+.article-link:hover::after {
+    transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    body {
+        padding: 1.5rem 1rem;
+        align-items: flex-start;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .options-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .option-card {
+        border-right: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+    }
+
+    .option-card:nth-child(3n) {
+        border-right: 1px solid var(--rule);
+    }
+
+    .option-card:nth-child(2n) {
+        border-right: none;
+    }
+
+    .option-card:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+
+    .button-group {
+        flex-direction: column-reverse;
+    }
+
+    button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .article-section {
+        padding: 2rem 1.25rem;
+    }
+
+    .article-title {
+        font-size: 1.3rem;
+    }
+
+    .articles-header {
+        padding: 1.75rem 1.25rem 1.25rem;
+    }
+
+    .articles-header h1 {
+        font-size: 1.75rem;
+    }
+}
