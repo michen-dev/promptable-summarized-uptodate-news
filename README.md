@@ -1,1 +1,1 @@
-# promptable-summarized-uptodate-news
+# prompt-summarized-uptodate-news

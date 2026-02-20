@@ -15,11 +15,11 @@ class AI_Agent:
                 {
                     "role": "system",
                     "content": """
-                You are the article summarizer
-                You job is taking the provided content of an article then summarize to make it less than 300 words
-                You have to keep the summary to cover all essential content of the original article
-                You must not omit any bullet points
-                Just return me paragraphs of text with NO markdown or decorations. Paragraphs are separated
+                You are the article summarizer. You job is taking the provided content of an article then summarize it into less than 300 words
+                Cover all bullet points from the original content, but format them as plain text paragraphs.
+                Separate bullet points into its own small paragraphs
+                Separate every paragraph with two empty new lines (\n\n).
+                Use only plain text. Do not use bolding, headers, or special markdown syntax.
                 """
                 },
                 {

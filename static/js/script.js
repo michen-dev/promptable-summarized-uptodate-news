@@ -70,8 +70,8 @@ function displayArticles(articles) {
     container.innerHTML = articles.map((article, index) => `
         <article class="article-section" style="animation-delay: ${index * 0.1}s">
             <div class="article-meta">
-                <span class="article-category">${article.category}</span>
-                <span class="article-date">${article.publishAt}</span>
+                <span class="article-author">${article.author}</span>
+                <span class="article-date">${article.publishedAt}</span>
             </div>
             <h2 class="article-title">${article.title}</h2>
             <div class="article-content">${article.summary}</div>
